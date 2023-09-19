@@ -26,3 +26,31 @@ def get_pdf_text(pdf_files):
         for page in reader.pages:
             text += page.extract_text()
     return text
+
+
+def get_chunk_text(text):
+
+    tokens = word_tokenize(text)
+    max_chunk_size = 100  # Maximum number of tokens per chunk
+    chunks = [] 
+    current_chunk = []
+    current_chunk_length = 0
+
+    # Iterate through the tokens
+    for token in tokens:
+        # If adding the token to the current chunk doesn't exceed the max_chunk_size
+        if current_chunk_length + len(token) <= max_chunk_size:
+            current_chunk.append(token)
+            current_chunk_length += len(token)
+        else:
+            # If adding the token exceeds the limit, start a new chunk
+            chunks.append(" ".join(current_chunk))
+            current_chunk = [token]
+            current_chunk_length = len(token)
+
+    # Add the last chunk (if any)
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
+
+
+    return chunks

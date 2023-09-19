@@ -54,3 +54,12 @@ def get_chunk_text(text):
 
 
     return chunks
+
+def get_vector_store(text_chunks):
+    
+    
+    embeddings = HuggingFaceInstructEmbeddings(model_name = "hkunlp/instructor-xl")
+
+    vectorstore = FAISS.from_texts(texts = text_chunks, embedding = embeddings)
+    
+    return vectorstore

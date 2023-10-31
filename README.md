@@ -1,2 +1,15 @@
 # Intelligent PDF Document Analysis Chatbot using LLM and Long-Chain Library
-Our repository hosts a chatbot project that analyzes PDF documents using large language models and a long-chain library
+
+
+This Streamlit application provides a chatbot interface for interacting with PDF documents. Users can have natural language conversations with the chatbot to perform various actions on PDFs, such as extracting text, summarizing content, or searching for specific information.
+
+
+
+# Features
+
+* Engage in text-based conversations with a chatbot.
+* Upload PDF documents to interact with.
+* Extract text from PDFs.
+* Summarize PDF content.
+* Search for keywords or information in PDFs
+

@@ -20,7 +20,8 @@ This Streamlit application provides a chatbot interface for interacting with PDF
 
 
 
-![Image](https://example.com/sample-image.jpg](https://i.ibb.co/thMR0DN/Capture-d-cran-2023-10-31-175838.png)https://i.ibb.co/thMR0DN/Capture-d-cran-2023-10-31-175838.png)
+![Image](https://i.ibb.co/thMR0DN/Capture-d-cran-2023-10-31-175838.png)
+
 
 
 

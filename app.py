@@ -90,3 +90,49 @@ def handle_user_input(question):
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
 
 
+
+def main():
+    
+    st.set_page_config(page_title='Chat with me ! to extract informations from your documents', page_icon=':books:')
+
+    st.write(css, unsafe_allow_html=True)
+    
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
+    
+    st.header('Chatbot assistant')
+    question = st.text_input("Ask anything to your PDF: ")
+
+    if question:
+        handle_user_input(question)
+    
+
+    with st.sidebar:
+        st.subheader("Upload your Documents Here: ")
+        pdf_files = st.file_uploader("Choose your PDF Files and Press OK", type=['pdf'], accept_multiple_files=True)
+
+        if st.button("OK"):
+            with st.spinner("Processing your PDFs..."):
+
+                # Get PDF Text
+                raw_text = get_pdf_text(pdf_files)
+
+                # Get Text Chunks
+                text_chunks = get_chunk_text(raw_text)
+                
+
+                # Create Vector Store
+                
+                vector_store = get_vector_store(text_chunks)
+                st.write("DONE")
+
+                # Create conversation chain
+
+                st.session_state.conversation =  get_conversation_chain(vector_store)
+
+
+if __name__ == '__main__':
+    main()
